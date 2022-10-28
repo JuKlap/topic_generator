@@ -24,11 +24,11 @@ public class TopicServiceImpl implements TopicService {
     private TopicRepository topicRepository;
 
     @Override
-    public Topics getRandomQuestion() {
+    public String getRandomQuestion() {
         Long randomNumber = ThreadLocalRandom.current().nextLong(topicRepository.count());
         List<TopicDAO> topics = topicRepository.findAll();
         TopicDAO topicDAO = topics.get(Math.toIntExact(randomNumber));
-        return topicMapper.topicDAO_TO_topic(topicDAO);
+        return topicMapper.topicDAO_TO_topic(topicDAO).getQuestion();
     }
 
     @Override
@@ -45,7 +45,6 @@ public class TopicServiceImpl implements TopicService {
                 .filter(TopicDAO::isPanicOrNot)
                 .map(topicMapper::topicDAO_TO_topic)
                 .collect(Collectors.toList());
-
         Long randomNumber = ThreadLocalRandom.current().nextLong(panicQuestions.size());
         return panicQuestions.get(Math.toIntExact(randomNumber));
     }
@@ -62,7 +61,6 @@ public class TopicServiceImpl implements TopicService {
 
         List<String> justQuestions = new ArrayList<>();
         allTopicsByTopic.forEach(topics -> justQuestions.add(topics.getQuestion()));
-
         return justQuestions;
     }
 }

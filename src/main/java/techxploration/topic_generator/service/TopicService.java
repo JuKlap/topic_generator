@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface TopicService {
 
-    Topics getRandomQuestion();
+    String getRandomQuestion();
 
     List<String> getAllTopics();
 

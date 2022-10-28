@@ -21,7 +21,7 @@ public class TopicController {
     private TopicService topicService;
 
     @GetMapping("/random")
-    public ResponseEntity<Topics> getRandomQuestion() {
+    public ResponseEntity<String> getRandomQuestion() {
         return new ResponseEntity<>(topicService.getRandomQuestion(), HttpStatus.OK);
     }
 
