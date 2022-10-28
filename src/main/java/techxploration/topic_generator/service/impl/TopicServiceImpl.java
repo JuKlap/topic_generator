@@ -25,15 +25,17 @@ public class TopicServiceImpl implements TopicService {
 
     @Override
     public String getRandomQuestion() {
-        Long randomNumber = ThreadLocalRandom.current().nextLong(topicRepository.count());
+        long randomNumber = ThreadLocalRandom.current().nextLong(topicRepository.count());
         List<TopicDAO> topics = topicRepository.findAll();
         TopicDAO topicDAO = topics.get(Math.toIntExact(randomNumber));
-        return topicMapper.topicDAO_TO_topic(topicDAO).getQuestion();
+        return topicMapper.topicDAOToTopic(topicDAO).getQuestion();
     }
 
     @Override
     public List<String> getAllTopics() {
-        List<Topics> allTopics = topicRepository.findAll().stream().map(topicMapper::topicDAO_TO_topic).collect(Collectors.toList());
+        List<Topics> allTopics = topicRepository.findAll().stream()
+                .map(topicMapper::topicDAOToTopic)
+                .collect(Collectors.toList());
         List<String> justTopics = new ArrayList<>();
         allTopics.forEach(topics -> justTopics.add(topics.getTopic()));
         return justTopics.stream().distinct().collect(Collectors.toList());
@@ -43,9 +45,9 @@ public class TopicServiceImpl implements TopicService {
     public Topics getPanicQuestion() {
         List<Topics> panicQuestions = topicRepository.findAll().stream()
                 .filter(TopicDAO::isPanicOrNot)
-                .map(topicMapper::topicDAO_TO_topic)
+                .map(topicMapper::topicDAOToTopic)
                 .collect(Collectors.toList());
-        Long randomNumber = ThreadLocalRandom.current().nextLong(panicQuestions.size());
+        long randomNumber = ThreadLocalRandom.current().nextLong(panicQuestions.size());
         return panicQuestions.get(Math.toIntExact(randomNumber));
     }
 
@@ -56,7 +58,7 @@ public class TopicServiceImpl implements TopicService {
         }
         List<Topics> allTopicsByTopic = topicRepository.findAll().stream()
                 .filter(topicDAO -> topicDAO.getTopic().equalsIgnoreCase(topic))
-                .map(topicMapper::topicDAO_TO_topic)
+                .map(topicMapper::topicDAOToTopic)
                 .collect(Collectors.toList());
 
         List<String> justQuestions = new ArrayList<>();

@@ -8,8 +8,8 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @EnableMongoRepositories
 public class TopicGeneratorApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(TopicGeneratorApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(TopicGeneratorApplication.class, args);
+    }
 
 }
