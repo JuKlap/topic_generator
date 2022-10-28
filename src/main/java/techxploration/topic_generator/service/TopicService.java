@@ -8,10 +8,10 @@ public interface TopicService {
 
     Topics getRandomQuestion();
 
-    List<Topics> getAllTopics();
+    List<String> getAllTopics();
 
     Topics getPanicQuestion();
 
-    List<Topics> getAllQuestionsByTopic();
+    List<String> getAllQuestionsByTopic(String topic);
 
 }
