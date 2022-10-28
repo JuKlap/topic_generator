@@ -1,23 +1,20 @@
 package techxploration.topic_generator.repository.model;
 
-import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @NoArgsConstructor
-@Entity
-@Table(name = "TopicGenerator")
+@Document("TopicGenerator")
 public class TopicDAO {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private String id;
 
     @Column(name = "topic")
     private String topic;
@@ -52,12 +49,11 @@ public class TopicDAO {
         this.panicOrNot = panicOrNot;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
-
 }

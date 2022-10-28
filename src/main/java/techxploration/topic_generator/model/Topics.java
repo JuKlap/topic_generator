@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 public class Topics {
 
-    private Long id;
+    private String id;
     private String topic;
     private String question;
     private boolean panicOrNot;

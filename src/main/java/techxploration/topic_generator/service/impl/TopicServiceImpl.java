@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import techxploration.topic_generator.mappers.TopicMapper;
 import techxploration.topic_generator.model.Topics;
 import techxploration.topic_generator.repository.TopicRepository;
+import techxploration.topic_generator.repository.model.TopicDAO;
 import techxploration.topic_generator.service.TopicService;
 
 import java.util.List;
@@ -26,9 +27,9 @@ public class TopicServiceImpl implements TopicService {
 
         Long bound = topicRepository.count();
         Long randomNumber = ThreadLocalRandom.current().nextLong(bound);
-
-        return topicRepository.findById(randomNumber).flatMap(topicDAO -> Optional.of(topicMapper.topicDAO_TO_topic(topicDAO)))
-                .orElseThrow(() -> new RuntimeException("Topic Not Found"));
+        List<TopicDAO> topics = topicRepository.findAll();
+        TopicDAO topicDAO = topics.get(Math.toIntExact(randomNumber));
+        return topicMapper.topicDAO_TO_topic(topicDAO);
 
     }
 
