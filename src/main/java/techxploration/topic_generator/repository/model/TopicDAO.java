@@ -23,7 +23,7 @@ public class TopicDAO {
     private String question;
 
     @Column(name = "panik")
-    private boolean panicOrNot;
+    private boolean panik;
 
     public String getTopic() {
         return topic;
@@ -41,12 +41,12 @@ public class TopicDAO {
         this.question = question;
     }
 
-    public boolean isPanicOrNot() {
-        return panicOrNot;
+    public boolean isPanik() {
+        return panik;
     }
 
-    public void setPanicOrNot(boolean panicOrNot) {
-        this.panicOrNot = panicOrNot;
+    public void setPanik(boolean panik) {
+        this.panik = panik;
     }
 
     public String getId() {

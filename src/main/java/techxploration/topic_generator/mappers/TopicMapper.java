@@ -13,7 +13,7 @@ public class TopicMapper {
             topicDAO.setId(topics.getId());
         }
         topicDAO.setQuestion(topics.getTopic());
-        topicDAO.setPanicOrNot(topics.isPanicOrNot());
+        topicDAO.setPanik(topics.isPanik());
         return topicDAO;
     }
 
@@ -21,7 +21,7 @@ public class TopicMapper {
         Topics topic = new Topics();
         topic.setTopic(topicDAO.getTopic());
         topic.setQuestion(topicDAO.getQuestion());
-        topic.setPanicOrNot(topicDAO.isPanicOrNot());
+        topic.setPanik(topicDAO.isPanik());
         return topic;
     }
 

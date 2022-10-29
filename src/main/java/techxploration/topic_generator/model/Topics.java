@@ -12,6 +12,6 @@ public class Topics {
     private String id;
     private String topic;
     private String question;
-    private boolean panicOrNot;
+    private boolean panik;
 
 }

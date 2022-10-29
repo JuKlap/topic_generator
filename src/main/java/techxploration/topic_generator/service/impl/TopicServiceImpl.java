@@ -44,7 +44,7 @@ public class TopicServiceImpl implements TopicService {
     @Override
     public Topics getPanicQuestion() {
         List<Topics> panicQuestions = topicRepository.findAll().stream()
-                .filter(TopicDAO::isPanicOrNot)
+                .filter(TopicDAO::isPanik)
                 .map(topicMapper::topicDAOToTopic)
                 .collect(Collectors.toList());
         long randomNumber = ThreadLocalRandom.current().nextLong(panicQuestions.size());
