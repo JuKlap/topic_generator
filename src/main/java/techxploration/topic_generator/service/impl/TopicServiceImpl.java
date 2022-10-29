@@ -49,7 +49,7 @@ public class TopicServiceImpl implements TopicService {
                 .collect(Collectors.toList());
         List<String> panicQuestions = new ArrayList<>();
         panicTopics.forEach(topics -> panicQuestions.add(topics.getQuestion()));
-        return panicQuestions;
+        return panicQuestions.stream().distinct().collect(Collectors.toList());
     }
 
     @Override
