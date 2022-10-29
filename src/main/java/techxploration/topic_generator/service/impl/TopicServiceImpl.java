@@ -42,13 +42,14 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public Topics getPanicQuestion() {
-        List<Topics> panicQuestions = topicRepository.findAll().stream()
+    public List<String> getPanicQuestions() {
+        List<Topics> panicTopics = topicRepository.findAll().stream()
                 .filter(TopicDAO::isPanik)
                 .map(topicMapper::topicDAOToTopic)
                 .collect(Collectors.toList());
-        long randomNumber = ThreadLocalRandom.current().nextLong(panicQuestions.size());
-        return panicQuestions.get(Math.toIntExact(randomNumber));
+        List<String> panicQuestions = new ArrayList<>();
+        panicTopics.forEach(topics -> panicQuestions.add(topics.getQuestion()));
+        return panicQuestions;
     }
 
     @Override

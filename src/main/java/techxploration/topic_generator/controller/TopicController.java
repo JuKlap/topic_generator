@@ -31,8 +31,8 @@ public class TopicController {
     }
 
     @GetMapping("/panic")
-    public ResponseEntity<Topics> getPanicQuestion() {
-        return new ResponseEntity<>(topicService.getPanicQuestion(), HttpStatus.OK);
+    public ResponseEntity<List<String>> getPanicQuestion() {
+        return new ResponseEntity<>(topicService.getPanicQuestions(), HttpStatus.OK);
     }
 
     @GetMapping("/{topic}/all")

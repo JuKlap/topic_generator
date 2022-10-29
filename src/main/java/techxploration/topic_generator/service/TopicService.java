@@ -10,7 +10,7 @@ public interface TopicService {
 
     List<String> getAllTopics();
 
-    Topics getPanicQuestion();
+    List<String> getPanicQuestions();
 
     List<String> getAllQuestionsByTopic(String topic);
 
